@@ -4,15 +4,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 
 // ==========================================
-// 1. CONFIGURATION DES MÉDIAS (PHOTOS / VIDÉOS)
+// Mettez les VRAIS NOMS de vos fichiers ici !
 // ==========================================
 const MEDIAS = [
-  { type: 'image', url: '/images/2.jpg' },
-  { type: 'video', url: '/images/12.mp4' },
+  { type: 'image', url: '/images/1.jpg' },
+  { type: 'video', url: '/images/2.mp4' },
   { type: 'image', url: '/images/3.jpg' },
   { type: 'image', url: '/images/4.jpg' },
-  { type: 'video', url: '/images/11.mp4' },
-  { type: 'image', url: '/images/1.jpg' },
 ];
 
 export default function Home() {
@@ -30,12 +28,18 @@ export default function Home() {
 
   if (!hasStarted) {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 'screen', height: '100vh', backgroundColor: '#000000', color: '#ffffff', fontFamily: 'serif', padding: '20px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '2.5rem', color: '#e9d5ff', letterSpacing: '0.2em', marginBottom: '16px', textTransform: 'uppercase' }}>KALI — 14.07.2003</h1>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: '#000000', color: '#ffffff', fontFamily: 'serif', padding: '20px', textAlign: 'center', boxSizing: 'border-box' }}>
+        <style>{`
+          @keyframes pulseText { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.05); opacity: 1; } }
+          @keyframes floatBtn { 0% { box-shadow: 0 0 10px rgba(147, 51, 234, 0.2); } 100% { box-shadow: 0 0 25px rgba(168, 85, 247, 0.6); } }
+          .animated-title { animation: pulseText 2s infinite alternate ease-in-out; }
+          .animated-btn:hover { background-color: rgba(147, 51, 234, 0.2) !important; transform: scale(1.05); }
+        `}</style>
+        <h1 className="animated-title" style={{ fontSize: '2.5rem', color: '#e9d5ff', letterSpacing: '0.2em', marginBottom: '16px', textTransform: 'uppercase' }}>KALI — 14.07.2003</h1>
         <p style={{ color: 'rgba(216, 180, 254, 0.6)', fontSize: '0.9rem', marginBottom: '32px', maxWidth: '350px' }}>
           Un petit espace secret pour célébrer une personne unique.
         </p>
-        <button onClick={startWebsite} style={{ padding: '12px 32px', backgroundColor: 'transparent', border: '1px solid rgba(147, 51, 234, 0.4)', borderRadius: '9999px', color: '#c084fc', fontSize: '1rem', letterSpacing: '0.1em', cursor: 'pointer', transition: 'all 0.3s', boxShadow: '0 0 15px rgba(147, 51, 234, 0.15)' }}>
+        <button onClick={startWebsite} className="animated-btn" style={{ padding: '12px 32px', backgroundColor: 'transparent', border: '1px solid rgba(147, 51, 234, 0.6)', borderRadius: '9999px', color: '#c084fc', fontSize: '1rem', letterSpacing: '0.1em', cursor: 'pointer', transition: 'all 0.4s ease', animation: 'floatBtn 1.5s infinite alternate ease-in-out' }}>
           Entrer dans notre histoire 💜
         </button>
       </div>
@@ -43,12 +47,12 @@ export default function Home() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#000000', color: '#ffffff', fontFamily: 'serif', position: 'relative', overflowX: 'hidden' }}>
+    <div style={{ minHeight: '100vh', backgroundColor: '#05020a', color: '#ffffff', fontFamily: 'serif', position: 'relative', overflowX: 'hidden' }}>
       <audio ref={bgMusic} src="/audio/those_eyes.mp3" loop />
       
-      {/* BARRE DE NAVIGATION */}
-      <nav style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(15, 23, 42, 0.6)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(147, 51, 234, 0.2)', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxSizing: 'border-box' }}>
-        <div style={{ color: '#e9d5ff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '0.1em' }}>KALI'S DAY 💜</div>
+      {/* BARRE DE NAVIGATION ANIMÉE */}
+      <nav style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(11, 5, 20, 0.7)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(147, 51, 234, 0.2)', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxSizing: 'border-box' }}>
+        <div style={{ color: '#e9d5ff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '0.1em', textShadow: '0 0 8px rgba(168,85,247,0.4)' }}>KALI'S DAY 💜</div>
         <div style={{ display: 'flex', gap: '24px' }}>
           {[
             { id: 'letter', label: 'Ma Lettre' },
@@ -58,7 +62,7 @@ export default function Home() {
             <button
               key={item.id}
               onClick={() => setActiveSection(item.id)}
-              style={{ background: 'none', border: 'none', color: activeSection === item.id ? '#c084fc' : 'rgba(243, 232, 255, 0.6)', fontWeight: activeSection === item.id ? 'bold' : 'normal', borderBottom: activeSection === item.id ? '2px solid #a855f7' : 'none', paddingBottom: '4px', cursor: 'pointer', fontSize: '0.9rem', transition: 'all 0.3s' }}
+              style={{ background: 'none', border: 'none', color: activeSection === item.id ? '#e9d5ff' : 'rgba(243, 232, 255, 0.4)', fontWeight: activeSection === item.id ? 'bold' : 'normal', borderBottom: activeSection === item.id ? '2px solid #c084fc' : 'none', paddingBottom: '4px', cursor: 'pointer', fontSize: '0.9rem', transition: 'all 0.3s ease', textShadow: activeSection === item.id ? '0 0 10px rgba(192,132,252,0.6)' : 'none' }}
             >
               {item.label}
             </button>
@@ -66,7 +70,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <main style={{ transition: 'all 0.5s' }}>
+      <main style={{ transition: 'all 0.5s ease' }}>
         {activeSection === 'letter' && <LetterSection />}
         {activeSection === 'gallery' && <GallerySection />}
         {activeSection === 'wishes' && <WishesSection />}
@@ -74,25 +78,28 @@ export default function Home() {
     </div>
   );
 }
-
 // ==========================================
-// 2. COMPOSANT : MA LETTRE
+// 2. COMPOSANT : MA LETTRE ANIMÉE
 // ==========================================
 export function LetterSection() {
   const paragraphs = [
-    "Mon bébés d'amour,",
-    "Aujourd'hui est une journée si particulière. En ce 14 juillet, le monde entier célèbre peut-être autre chose, mais pour moi, cette date n'a qu'un seul sens : elle marque le jour où on a mis au monde une personne extraordinaire qui est venue uniquement dans ce monde pour illuminer nos vies.",
-    "Regarder ces photos et ces vidéos de nous me rappelle à quel point chaque instant passé à tes côtés est précieux. Ta présence, ton rire, ta manière unique de voir les choses, ta manière de me montrer que tu tiens à moi... tout chez toi apporte une douceur à mon quotidien.",
+    "Mon bébé d'amour,",
+    "Aujourd'hui est une journée si particulière. En ce 14 juillet, le monde entier célèbre peut-être autre chose, mais pour moi, cette date n'a qu'un seul sens : elle marque le jour où une personne extraordinaire est venue dans ce monde pour illuminer nos vies.",
+    "Regarder ces photos et ces vidéos de nous me rappelle à quel point chaque instant passé à tes côtés est précieux. Ta présence, ton rire, ta manière unique de voir les choses et de tenir à moi... tout chez toi apporte une douceur immense à mon quotidien.",
     "Je voulais profiter de cet espace secret pour te dire merci. Merci d'être exactement qui tu es, avec cette lumière qui n'appartient qu'à toi. Je te souhaite le plus merveilleux des anniversaires, rempli de rires, de projets fous et de tout le bonheur que tu mérites tant.",
     "Prends soin de toi, continue de briller.",
     "Avec toute ma tendresse, ton emmerdeuse Jaël 💜"
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #1e1b4b, #311042, #11031c)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px', boxSizing: 'border-box' }}>
-      <div style={{ maxWidth: '42rem', width: '100%', backgroundColor: 'rgba(15, 23, 42, 0.4)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: '1px solid rgba(168, 85, 247, 0.2)', padding: '40px', borderRadius: '24px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)', boxSizing: 'border-box' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #0c0714, #230b30, #0c0714)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px', boxSizing: 'border-box' }}>
+      <style>{`
+        @keyframes fadeInLetter { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .letter-card { animation: fadeInLetter 1.2s ease-out; }
+      `}</style>
+      <div className="letter-card" style={{ maxWidth: '42rem', width: '100%', backgroundColor: 'rgba(15, 8, 28, 0.6)', border: '1px solid rgba(168, 85, 247, 0.25)', padding: '40px', borderRadius: '24px', boxShadow: '0 0 30px rgba(168, 85, 247, 0.1)', boxSizing: 'border-box' }}>
         {paragraphs.map((text, index) => (
-          <p key={index} style={{ marginBottom: '24px', color: 'rgba(243, 232, 255, 0.9)', fontSize: index === 0 ? '1.3rem' : '1.05rem', fontWeight: (index === 0 || index === paragraphs.length - 1) ? 'bold' : 'normal', textAlign: index === paragraphs.length - 1 ? 'right' : 'justify', fontStyle: index === paragraphs.length - 1 ? 'italic' : 'normal', color: index === 0 ? '#e9d5ff' : index === paragraphs.length - 1 ? '#c084fc' : 'rgba(243, 232, 255, 0.9)', lineHeight: '1.7' }}>
+          <p key={index} style={{ marginBottom: '24px', fontSize: index === 0 ? '1.4rem' : '1.05rem', fontWeight: (index === 0 || index === paragraphs.length - 1) ? 'bold' : 'normal', textAlign: index === paragraphs.length - 1 ? 'right' : 'justify', fontStyle: index === paragraphs.length - 1 ? 'italic' : 'normal', color: index === 0 ? '#e9d5ff' : index === paragraphs.length - 1 ? '#c084fc' : 'rgba(243, 232, 255, 0.85)', lineHeight: '1.8' }}>
             {text}
           </p>
         ))}
@@ -102,7 +109,7 @@ export function LetterSection() {
 }
 
 // ==========================================
-// 3. COMPOSANT : GALERIE
+// 3. COMPOSANT : GALERIE IMMERSIVE
 // ==========================================
 export function GallerySection() {
   const [index, setIndex] = useState(0);
@@ -119,34 +126,41 @@ export function GallerySection() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #2e1065, #4c1d95, #1e1b4b)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '16px', paddingRight: '16px', boxSizing: 'border-box' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #140727, #3b1354, #140727)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '16px', paddingRight: '16px', boxSizing: 'border-box' }}>
       <audio ref={sfxPage} src="/audio/page-flip.mp3" />
-      <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', tracking: '0.05em', textAlign: 'center' }}>Les fragments de notre complicité</h2>
-      <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '24px', textAlign: 'center' }}>Le temps passe, mais les rires restent gravés.</p>
+      <style>{`
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .media-container { animation: scaleIn 0.5s ease-out; }
+        .nav-btn:hover:not(:disabled) { background-color: #6b21a8 !important; transform: translateY(-2px); }
+      `}</style>
       
-      <div style={{ relative: 'true', width: '100%', maxWidth: '500px', aspectRatio: '4/3', backgroundColor: 'rgba(88, 28, 135, 0.2)', borderRadius: '24px', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)', border: '1px solid rgba(192, 132, 252, 0.2)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        {MEDIAS[index] && (
+      <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre complicité</h2>
+      <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les rires restent gravés.</p>
+      
+      <div className="media-container" key={index} style={{ width: '100%', maxWidth: '550px', aspectRatio: '4/3', backgroundColor: '#090412', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(168,85,247,0.15)', border: '1px solid rgba(192, 132, 252, 0.3)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {MEDIAS[index] ? (
           <div style={{ width: '100%', height: '100%' }}>
             {MEDIAS[index].type === 'image' ? (
-              <img src={MEDIAS[index].url} alt="Souvenir d'album" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={MEDIAS[index].url} alt="Souvenir" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             ) : (
               <video src={MEDIAS[index].url} autoPlay muted loop style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             )}
           </div>
+        ) : (
+          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Aucun média trouvé. Vérifiez les noms de fichiers.</p>
         )}
       </div>
 
-      <div style={{ display: 'flex', gap: '24px', marginTop: '24px', alignItems: 'center' }}>
-        <button onClick={() => changePage(-1)} disabled={index === 0} style={{ padding: '10px 20px', backgroundColor: 'rgba(88, 28, 135, 0.4)', border: '1px solid rgba(192, 132, 252, 0.3)', borderRadius: '12px', color: '#e9d5ff', cursor: index === 0 ? 'not-allowed' : 'pointer', opacity: index === 0 ? 0.3 : 1, transition: 'all 0.3s' }}>◄ Précédent</button>
-        <span style={{ color: '#c084fc', fontSize: '1rem', fontWeight: 'bold' }}>{index + 1} / {MEDIAS.length}</span>
-        <button onClick={() => changePage(1)} disabled={index === MEDIAS.length - 1} style={{ padding: '10px 20px', backgroundColor: 'rgba(88, 28, 135, 0.4)', border: '1px solid rgba(192, 132, 252, 0.3)', borderRadius: '12px', color: '#e9d5ff', cursor: index === MEDIAS.length - 1 ? 'not-allowed' : 'pointer', opacity: index === MEDIAS.length - 1 ? 0.3 : 1, transition: 'all 0.3s' }}>Suivant ➔</button>
+      <div style={{ display: 'flex', gap: '24px', marginTop: '32px', alignItems: 'center' }}>
+        <button onClick={() => changePage(-1)} disabled={index === 0} className="nav-btn" style={{ padding: '10px 24px', backgroundColor: 'rgba(88, 28, 135, 0.5)', border: '1px solid rgba(192, 132, 252, 0.4)', borderRadius: '12px', color: '#e9d5ff', cursor: index === 0 ? 'not-allowed' : 'pointer', opacity: index === 0 ? 0.3 : 1, transition: 'all 0.3s ease' }}>◄ Précédent</button>
+        <span style={{ color: '#e9d5ff', fontSize: '1rem', fontWeight: 'bold', backgroundColor: 'rgba(0,0,0,0.3)', padding: '6px 14px', borderRadius: '20px' }}>{index + 1} / {MEDIAS.length}</span>
+        <button onClick={() => changePage(1)} disabled={index === MEDIAS.length - 1} className="nav-btn" style={{ padding: '10px 24px', backgroundColor: 'rgba(88, 28, 135, 0.5)', border: '1px solid rgba(192, 132, 252, 0.4)', borderRadius: '12px', color: '#e9d5ff', cursor: index === MEDIAS.length - 1 ? 'not-allowed' : 'pointer', opacity: index === MEDIAS.length - 1 ? 0.3 : 1, transition: 'all 0.3s ease' }}>Suivant ➔</button>
       </div>
     </div>
   );
 }
-
 // ==========================================
-// 4. COMPOSANT : VŒUX & BOUGIES
+// 4. COMPOSANT : VŒUX & BOUGIES INTERACTIVES
 // ==========================================
 export function WishesSection() {
   const [candles, setCandles] = useState([true, true, true, true, true]);
@@ -160,31 +174,38 @@ export function WishesSection() {
     setCandles(newCandles);
   };
 
- useEffect(() => {
+  useEffect(() => {
     if (allExtinguished) {
       const colors = ['#a855f7', '#c084fc', '#e9d5ff', '#fbbf24', '#fef08a'];
-      confetti({ particleCount: 150, spread: 80, origin: { x: 0.2, y: 0.6 }, colors });
-      confetti({ particleCount: 150, spread: 80, origin: { x: 0.8, y: 0.6 }, colors });
+      confetti({ particleCount: 180, spread: 90, origin: { x: 0.1, y: 0.5 }, colors });
+      confetti({ particleCount: 180, spread: 90, origin: { x: 0.9, y: 0.5 }, colors });
     }
   }, [allExtinguished]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #4c1d95, #0f172a, #000000)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px', textAlign: 'center', boxSizing: 'border-box' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyWishes: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #230b30, #0a0410, #000000)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px', boxSizing: 'border-box' }}>
       <audio ref={sfxClick} src="/audio/click.mp3" />
+      <style>{`
+        @keyframes flameWobble { 0% { transform: scale(1) rotate(-2deg); } 100% { transform: scale(1.15) rotate(2deg); } }
+        @keyframes cardReveal { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .flame { animation: flameWobble 0.5s infinite alternate ease-in-out; }
+        .reveal-box { animation: cardReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+      `}</style>
+      
       <p style={{ maxWidth: '500px', color: 'rgba(243, 232, 255, 0.8)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '48px', fontStyle: 'italic', textAlign: 'center' }}>
-        "Une occasion parfaite pour rendre ta journée un peu plus magique. Voici pour une nouvelle année remplie de belles vagues, d'histoires encore plus douces et de petits bonheurs quotidiens qui méritent d'être gardés pour toujours. Que chaque doux instant vienne à toi naturellement. Reste au chaud, et continue de briller comme tu l'as toujours fait."
+        "Une occasion parfaite pour rendre ta journée un peu plus magique. Voici pour une nouvelle année remplie de belles vagues, d'histoires encore plus douces et de petits bonheurs quotidiens qui méritent d'être gardés pour toujours..."
       </p>
 
       {/* ZONE DES BOUGIES */}
-      <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', alignItems: 'flex-end', height: '150px', marginBottom: '32px' }}>
+      <div style={{ display: 'flex', gap: '24px', justifyContent: 'center', alignItems: 'flex-end', height: '150px', marginBottom: '40px' }}>
         {candles.map((isLit, i) => (
-          <div key={i} onClick={() => isLit && extinguishCandle(i)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: isLit ? 'pointer' : 'default' }}>
+          <div key={i} onClick={() => isLit && extinguishCandle(i)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: isLit ? 'pointer' : 'default', transition: 'all 0.3s' }}>
             {isLit ? (
-              <div style={{ width: '12px', height: '24px', background: 'linear-gradient(to top, #f59e0b, #ef4444)', borderRadius: '50% 50% 20% 20%', boxShadow: '0 0 15px #f59e0b', marginBottom: '4px' }} />
+              <div className="flame" style={{ width: '14px', height: '28px', background: 'linear-gradient(to top, #f59e0b, #ef4444, #ffedd5)', borderRadius: '50% 50% 20% 20%', boxShadow: '0 0 20px #f59e0b, 0 0 30px #ef4444', marginBottom: '6px' }} />
             ) : (
-              <div style={{ height: '28px' }} />
+              <div style={{ height: '34px' }} />
             )}
-            <div style={{ width: '16px', height: '80px', borderRadius: '4px 4px 0 0', background: isLit ? 'linear-gradient(to bottom, #c084fc, #6b21a8)' : '#1e1b4b', opacity: isLit ? 1 : 0.4, transition: 'all 0.5s' }} />
+            <div style={{ width: '18px', height: '85px', borderRadius: '4px 4px 0 0', background: isLit ? 'linear-gradient(to bottom, #d8b4fe, #7e22ce)' : '#120924', opacity: isLit ? 1 : 0.25, transition: 'all 0.6s ease' }} />
           </div>
         ))}
       </div>
@@ -194,13 +215,13 @@ export function WishesSection() {
       </h3>
 
       {allExtinguished && (
-        <div style={{ marginTop: '16px', padding: '32px', backgroundColor: 'rgba(88, 28, 135, 0.3)', border: '1px solid rgba(192, 132, 252, 0.4)', borderRadius: '24px', maxWidth: '350px', width: '100%', boxSizing: 'border-box', boxShadow: '0 20px 40px rgba(0,0,0,0.6)', textAlign: 'center' }}>
-          <h4 style={{ fontSize: '1.6rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire Kali ! 🎉</h4>
-          <p style={{ fontSize: '0.8rem', color: '#a855f7', letterSpacing: '0.2em', marginBottom: '16px' }}>14 JUILLET 2003</p>
-          <div style={{ width: '50px', height: '1px', backgroundColor: 'rgba(168, 85, 247, 0.4)', margin: '16px auto' }} />
-          <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.9)', marginBottom: '8px' }}>Merci d'être la lumière que tu es chaque jour.</p>
-          <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.85rem' }}>Avec toute ma tendresse,</p>
-          <p style={{ fontSize: '1.3rem', fontWeight: 'bold', color: '#ffffff', marginTop: '8px', letterSpacing: '0.05em' }}>Jaël 💜</p>
+        <div className="reveal-box" style={{ padding: '32px', backgroundColor: 'rgba(35, 11, 48, 0.6)', border: '1px solid rgba(192, 132, 252, 0.5)', borderRadius: '24px', maxWidth: '380px', width: '100%', boxSizing: 'border-box', boxShadow: '0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(168,85,247,0.3)', textAlign: 'center' }}>
+          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire Kali ! 🎉</h4>
+          <p style={{ fontSize: '0.8rem', color: '#c084fc', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 'bold' }}>14 JUILLET 2003</p>
+          <div style={{ width: '60px', height: '1px', backgroundColor: 'rgba(168, 85, 247, 0.4)', margin: '16px auto' }} />
+          <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.95)', marginBottom: '12px', lineHeight: '1.6' }}>Merci d'être la lumière que tu es chaque jour.</p>
+          <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.9rem' }}>Avec toute ma tendresse,</p>
+          <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#ffffff', marginTop: '6px', letterSpacing: '0.05em' }}>Jaël 💜</p>
         </div>
       )}
     </div>
