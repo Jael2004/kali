@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 
 // ==========================================
-// Mettez les VRAIS NOMS de vos fichiers ici !
+// LISTE DES MÉDIAS (PHOTOS / VIDÉOS)
 // ==========================================
 const MEDIAS = [
   { type: 'image', url: '/images/1.jpg' },
@@ -22,7 +22,8 @@ export default function Home() {
     setHasStarted(true);
     if (bgMusic.current) {
       bgMusic.current.volume = 0.4;
-      bgMusic.current.play().catch(e => console.log("L'audio attend une interaction"));
+      bgMusic.current.load();
+      bgMusic.current.play().catch(e => console.log("L'audio attend une interaction", e));
     }
   };
 
@@ -48,7 +49,7 @@ export default function Home() {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#05020a', color: '#ffffff', fontFamily: 'serif', position: 'relative', overflowX: 'hidden' }}>
-      <audio ref={bgMusic} src="/audio/those_eyes.mp3" loop />
+      <audio ref={bgMusic} src="/audio/those_eyes.mp3" preload="auto" loop />
       
       {/* BARRE DE NAVIGATION ANIMÉE */}
       <nav style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(11, 5, 20, 0.7)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(147, 51, 234, 0.2)', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxSizing: 'border-box' }}>
@@ -78,8 +79,9 @@ export default function Home() {
     </div>
   );
 }
+
 // ==========================================
-// 2. COMPOSANT : MA LETTRE ANIMÉE
+// COMPOSANT : MA LETTRE ANIMÉE
 // ==========================================
 export function LetterSection() {
   const paragraphs = [
@@ -107,9 +109,8 @@ export function LetterSection() {
     </div>
   );
 }
-
 // ==========================================
-// 3. COMPOSANT : GALERIE IMMERSIVE
+// COMPOSANT : GALERIE IMMERSIVE
 // ==========================================
 export function GallerySection() {
   const [index, setIndex] = useState(0);
@@ -117,17 +118,17 @@ export function GallerySection() {
 
   const changePage = (direction: number) => {
     if (direction === 1 && index < MEDIAS.length - 1) {
-      if (sfxPage.current) sfxPage.current.play();
+      if (sfxPage.current) { sfxPage.current.load(); sfxPage.current.play(); }
       setIndex(index + 1);
     } else if (direction === -1 && index > 0) {
-      if (sfxPage.current) sfxPage.current.play();
+      if (sfxPage.current) { sfxPage.current.load(); sfxPage.current.play(); }
       setIndex(index - 1);
     }
   };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #140727, #3b1354, #140727)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '16px', paddingRight: '16px', boxSizing: 'border-box' }}>
-      <audio ref={sfxPage} src="/audio/page-flip.mp3" />
+      <audio ref={sfxPage} src="/audio/page-flip.mp3" preload="auto" />
       <style>{`
         @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .media-container { animation: scaleIn 0.5s ease-out; }
@@ -143,11 +144,11 @@ export function GallerySection() {
             {MEDIAS[index].type === 'image' ? (
               <img src={MEDIAS[index].url} alt="Souvenir" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             ) : (
-              <video src={MEDIAS[index].url} autoPlay muted loop style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <video src={MEDIAS[index].url} autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             )}
           </div>
         ) : (
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Aucun média trouvé. Vérifiez les noms de fichiers.</p>
+          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Aucun média trouvé.</p>
         )}
       </div>
 
@@ -159,8 +160,9 @@ export function GallerySection() {
     </div>
   );
 }
+
 // ==========================================
-// 4. COMPOSANT : VŒUX & BOUGIES INTERACTIVES
+// COMPOSANT : VŒUX & BOUGIES INTERACTIVES
 // ==========================================
 export function WishesSection() {
   const [candles, setCandles] = useState([true, true, true, true, true]);
@@ -168,7 +170,7 @@ export function WishesSection() {
   const allExtinguished = candles.every(c => !c);
 
   const extinguishCandle = (index: number) => {
-    if (sfxClick.current) sfxClick.current.play();
+    if (sfxClick.current) { sfxClick.current.load(); sfxClick.current.play(); }
     const newCandles = [...candles];
     newCandles[index] = false;
     setCandles(newCandles);
@@ -183,8 +185,8 @@ export function WishesSection() {
   }, [allExtinguished]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyWishes: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #230b30, #0a0410, #000000)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px', boxSizing: 'border-box' }}>
-      <audio ref={sfxClick} src="/audio/click.mp3" />
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #230b30, #0a0410, #000000)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px', boxSizing: 'border-box' }}>
+      <audio ref={sfxClick} src="/audio/click.mp3" preload="auto" />
       <style>{`
         @keyframes flameWobble { 0% { transform: scale(1) rotate(-2deg); } 100% { transform: scale(1.15) rotate(2deg); } }
         @keyframes cardReveal { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
