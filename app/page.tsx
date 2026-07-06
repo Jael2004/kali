@@ -21,7 +21,7 @@ export default function Home() {
   const startWebsite = () => {
     setHasStarted(true);
     if (bgMusic.current) {
-      bgMusic.current.volume = 0.4;
+      bgMusic.current.volume = 0.7;
       bgMusic.current.load();
       bgMusic.current.play().catch(e => console.log("L'audio attend une interaction", e));
     }
