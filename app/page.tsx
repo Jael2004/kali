@@ -160,6 +160,49 @@ export function WishesSection() {
     setCandles(newCandles);
   };
 
-  useEffect(() => {
+ useEffect(() => {
     if (allExtinguished) {
       const colors = ['#a855f7', '#c084fc', '#e9d5ff', '#fbbf24', '#fef08a'];
+      confetti({ particleCount: 150, spread: 80, origin: { x: 0.2, y: 0.6 }, colors });
+      confetti({ particleCount: 150, spread: 80, origin: { x: 0.8, y: 0.6 }, colors });
+    }
+  }, [allExtinguished]);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #4c1d95, #0f172a, #000000)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px', textAlign: 'center', boxSizing: 'border-box' }}>
+      <audio ref={sfxClick} src="/audio/click.mp3" />
+      <p style={{ maxWidth: '500px', color: 'rgba(243, 232, 255, 0.8)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '48px', fontStyle: 'italic', textAlign: 'center' }}>
+        "Une occasion parfaite pour rendre ta journée un peu plus magique. Voici pour une nouvelle année remplie de belles vagues, d'histoires encore plus douces et de petits bonheurs quotidiens qui méritent d'être gardés pour toujours. Que chaque doux instant vienne à toi naturellement. Reste au chaud, et continue de briller comme tu l'as toujours fait."
+      </p>
+
+      {/* ZONE DES BOUGIES */}
+      <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', alignItems: 'flex-end', height: '150px', marginBottom: '32px' }}>
+        {candles.map((isLit, i) => (
+          <div key={i} onClick={() => isLit && extinguishCandle(i)} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: isLit ? 'pointer' : 'default' }}>
+            {isLit ? (
+              <div style={{ width: '12px', height: '24px', background: 'linear-gradient(to top, #f59e0b, #ef4444)', borderRadius: '50% 50% 20% 20%', boxShadow: '0 0 15px #f59e0b', marginBottom: '4px' }} />
+            ) : (
+              <div style={{ height: '28px' }} />
+            )}
+            <div style={{ width: '16px', height: '80px', borderRadius: '4px 4px 0 0', background: isLit ? 'linear-gradient(to bottom, #c084fc, #6b21a8)' : '#1e1b4b', opacity: isLit ? 1 : 0.4, transition: 'all 0.5s' }} />
+          </div>
+        ))}
+      </div>
+
+      <h3 style={{ fontSize: '1.2rem', color: '#e9d5ff', letterSpacing: '0.1em', marginBottom: '48px', textAlign: 'center' }}>
+        {allExtinguished ? "Tes vœux vont s'accomplir... ✨" : "Éteins chaque lumière et fais un vœu..."}
+      </h3>
+
+      {allExtinguished && (
+        <div style={{ marginTop: '16px', padding: '32px', backgroundColor: 'rgba(88, 28, 135, 0.3)', border: '1px solid rgba(192, 132, 252, 0.4)', borderRadius: '24px', maxWidth: '350px', width: '100%', boxSizing: 'border-box', boxShadow: '0 20px 40px rgba(0,0,0,0.6)', textAlign: 'center' }}>
+          <h4 style={{ fontSize: '1.6rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire Kali ! 🎉</h4>
+          <p style={{ fontSize: '0.8rem', color: '#a855f7', letterSpacing: '0.2em', marginBottom: '16px' }}>14 JUILLET 2003</p>
+          <div style={{ width: '50px', height: '1px', backgroundColor: 'rgba(168, 85, 247, 0.4)', margin: '16px auto' }} />
+          <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.9)', marginBottom: '8px' }}>Merci d'être la lumière que tu es chaque jour.</p>
+          <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.85rem' }}>Avec toute ma tendresse,</p>
+          <p style={{ fontSize: '1.3rem', fontWeight: 'bold', color: '#ffffff', marginTop: '8px', letterSpacing: '0.05em' }}>Jaël 💜</p>
+        </div>
+      )}
+    </div>
+  );
+}
