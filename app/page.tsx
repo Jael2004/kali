@@ -8,8 +8,8 @@ import confetti from 'canvas-confetti';
 // ==========================================
 const MEDIAS = [
   { type: 'image', url: '/images/1.jpg' },
-  { type: 'video', url: '/images/2.mp4' },
-  { type: 'image', url: '/images/3.jpg' },
+  { type: 'video', url: '/images/12.mp4' },
+  { type: 'image', url: '/images/3.jng' },
   { type: 'image', url: '/images/4.jpg' },
 ];
 
