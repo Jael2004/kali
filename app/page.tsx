@@ -36,7 +36,7 @@ export default function Home() {
           .animated-title { animation: pulseText 2s infinite alternate ease-in-out; }
           .animated-btn:hover { background-color: rgba(147, 51, 234, 0.2) !important; transform: scale(1.05); }
         `}</style>
-        <h1 className="animated-title" style={{ fontSize: '2.5rem', color: '#e9d5ff', letterSpacing: '0.2em', marginBottom: '16px', textTransform: 'uppercase' }}>KALI — 14.07.2003</h1>
+        <h1 className="animated-title" style={{ fontSize: '2.5rem', color: '#e9d5ff', letterSpacing: '0.2em', marginBottom: '16px', textTransform: 'uppercase' }}>POUR TOI MON BEBE D'AMOUR</h1>
         <p style={{ color: 'rgba(216, 180, 254, 0.6)', fontSize: '0.9rem', marginBottom: '32px', maxWidth: '350px' }}>
           Un petit espace secret pour célébrer une personne unique.
         </p>
