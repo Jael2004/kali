@@ -168,7 +168,7 @@ export function LetterSection() {
     "C'est vrai. J'ai failli, j'ai laissé cette phrase s'appliquer à moi. Je la refuse! Je veux toujours être là pour toi même si tout le monde part. Je veux être là de jour comme de nuit, dans la joie comme dans la peine, en tout instant, en toute circonstance." ,
     "Je ne sais pas comment me rattraper. Je veux revoir le passé dans l'avenir et le changer pour le rendre meilleur si tu permets, si t'es prête à refaire ce chemin avec moi.",
     "Tu as été la seule à être à mes côtés, à m'écouter sans me juger quand j'étais au bord du gouffre.",
-    "Je t'en revaudrais toute ma vie parce que tu as exercé une présence complète dans ma vie. ,
+    "Je t'en revaudrais toute ma vie parce que tu as exercé une présence complète dans ma vie." ,
 ‎
 ‎
     "Je parais sauvage mais j'ai envie de te traiter comme une reine, ce que tu mérites.",
