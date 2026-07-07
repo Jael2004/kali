@@ -179,26 +179,25 @@ export default function Home() {
 
 export function LetterSection() {
   
-  const paragraphs = [
+ const paragraphs = [
     `Mon bébé d'amour,`,
-    `Aujourd'hui est une journée si particulière. En ce 14 juillet, le monde entier célèbre peut-être autre chose, mais pour moi, cette date n'a qu'un seul sens : elle marque le jour où une personne extraordinaire a décidé de transformer ma vie.`,
+    `Aujourd'hui est une journée si particulière. En ce 14 juillet, le monde entier célèbre peut-être autre chose, mais pour moi, cette date n'a qu'un seul sens : elle marque le jour où une personne extraordinaire est venue dans ce monde pour illuminer nos vies.`,
     `Tu sais, j'ai réalisé : je n'ai pas su être là pour toi quand tu avais besoin de moi. Je n'ai pas su te tenir la main lorsque tu traversais cette situation avec le C.`,
-    `Je n'ai sans doute pas donné les meilleurs conseils, ou fait ni dit ce qu'il fallait pour t'aider. Ça me fait mal de constater qu'avec un peu de recul je ne t'ai rien apporté de beau, ni d'important.`,
+    `Je n'ai sans doute pas donné les meilleurs conseils, ou fait ni dit ce qu'il fallait pour t'aider. Ça me fait mal de constater qu'avec un peu de recul je ne t'ai rien apporté de beau, ni d'important...`,
     `J'ai bénéficié de tout sans rien donner en retour. Je sais que tu vois ça en LOL et tu me diras un truc du genre les gens ne seront toujours pas là dans notre vie, pour nous !`,
-    `C'est vrai. J'ai failli, j'ai laissé cette phrase s'appliquer à moi. Je la refuse ! Je veux toujours être là pour toi même si tout le monde part. Je veux être là de jour comme de nuit, dans tes moments de doutes et de joies.`,
+    `C'est vrai. J'ai failli, j'ai laissé cette phrase s'appliquer à moi. Je la refuse ! Je veux toujours être là pour toi même si tout le monde part. Je veux être là de jour comme de nuit, dans la joie comme dans la peine, en tout instant, en toute circonstance.`,
     `Je ne sais pas comment me rattraper. Je veux revoir le passé dans l'avenir et le changer pour le rendre meilleur si tu permets, si t'es prête à refaire ce chemin avec moi.`,
     `Tu as été la seule à être à mes côtés, à m'écouter sans me juger quand j'étais au bord du gouffre.`,
     `Je t'en revaudrai toute ma vie parce que tu as exercé une présence complète dans ma vie.`,
     `Je parais sauvage mais j'ai envie de te traiter comme une reine, ce que tu mérites.`,
-    `Je me mets à ton service de gré ou de force. On dira peut-être que c'est à ton gars de se montrer romantique avec toi mais moi je me plie à cette tâche, parce que actuellement je crois qu'au lieu de parler, c'est mieux d'agir.`,
+    `Je me mets à ton service de gré ou de force. On dira peut-être que c'est à ton gars de se montrer romantique avec toi mais moi je me plie à cette tâche, parce que actuellement je crois qu'aucun homme ne te mérite, et un homme te méritera lorsqu'il sera à la hauteur de nos attentes.`,
     `Bref, TU ME MANQUES.......................................`,
-    `Regarder ces photos et ces vidéos de nous me rappelle à quel point chaque instant passé à tes côtés est précieux. Ta présence, ton rire, ta manière unique de voir les choses et de tenir tête au monde entier.`,
-    `Je voulais profiter de cet espace secret pour te dire merci. Merci d'être exactement qui tu es, avec cette lumière qui n'appartient qu'à toi. Je te souhaite le plus merveilleux des anniversaires.`,
+    `Regarder ces photos et ces vidéos de nous me rappelle à quel point chaque instant passé à tes côtés est précieux. Ta présence, ton rire, ta manière unique de voir les choses et de tenir à moi... tout chez toi apporte une douceur immense à mon quotidien.`,
+    `Je voulais profiter de cet espace secret pour te dire merci. Merci d'être exactement qui tu es, avec cette lumière qui n'appartient qu'à toi. Je te souhaite le plus merveilleux des anniversaires, rempli de rires, de projets fous et de tout le bonheur que tu mérites tant. Inshallah Ouaga en téléchargement.`,
     `Prends soin de toi, continue de briller.`,
-    `Je n'ai pas grand-chose à te donner, retiens juste que tu es TOUT pour moi. I LOVE YOUUUUUUUUU`,
+    `Je n'ai pas grand-chose à te donner, retiens juste que tu es TOUT pour moi.`,
     `Avec tout mon amour, ton emmerdeuse Jaël 💜`
   ];
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #0c0714, #230b30, #0c0714)', padding: '40px 20px' }}>
       <style>{`
