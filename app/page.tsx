@@ -9,26 +9,64 @@ import confetti from 'canvas-confetti';
 const MEDIAS = [
   { type: 'image', url: '/images/1.jpg', caption: "Ton rire qui illumine toutes mes journées😂" }, 
   { type: 'image', url: '/images/5.jpg', cation: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
-  { type: 'image', url: '/images/6.jpg', caption: "Notre deuxième sortie ensemble, à refaire très vite sur Accra, Assini, Zanzibar le tour du monde en fait 🙃❤️" },
+  { type: 'image', url: '/images/6.jpeg', caption: "Notre deuxième sortie ensemble, à refaire très vite sur Accra, Assini, Zanzibar le tour du monde en fait 🙃❤️" },
   { type: 'image', url: '/images/3.png', cation: "Reste toujours la personne extraordinaire que tu es"},
   { type: 'video', url: '/images/12.mp4', cation: "Vois-tu comment t'es rayonnante, magnifique, tout belle...j'en passe, une DIVA en fait!"},
   { type: 'video', url: '/images/11.mp4', cation: "Je souris toujours en nous regardant. MERCI❤️"},
-  { type: 'image', url: '/images/2.png', cation: "Ma magnifique skinny brown skin girl😻 Tu as aura de mznnéquin même iyann😭🤌❤️" },
+  { type: 'image', url: '/images/2.png', cation: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
 ];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('letter');
   const [hasStarted, setHasStarted] = useState(false);
+  const [showCountdown, setShowCountdown] = useState(false);
+  const [countdownText, setCountdownText] = useState("03");
+  
   const bgMusic = useRef<HTMLAudioElement | null>(null);
+  const chronoSound = useRef<HTMLAudioElement | null>(null);
 
   const startWebsite = () => {
-    setHasStarted(true);
-    if (bgMusic.current) {
-      bgMusic.current.volume = 0.7;
-      bgMusic.current.load();
-      bgMusic.current.play().catch(e => console.log("L'audio attend une interaction", e));
+    setShowCountdown(true);
+    if (chronoSound.current) {
+      chronoSound.current.volume = 0.8;
+      chronoSound.current.play().catch(e => console.log("Erreur chrono", e));
     }
   };
+
+  useEffect(() => {
+    if (!showCountdown) return;
+
+    const timer1 = setTimeout(() => setCountdownText("02"), 1000);
+    const timer2 = setTimeout(() => setCountdownText("01"), 2000);
+    const timer3 = setTimeout(() => {
+      setShowCountdown(false);
+      setHasStarted(true);
+      if (bgMusic.current) {
+        bgMusic.current.volume = 0.7; // Volume réglé plus fort !
+        bgMusic.current.play().catch(e => console.log("Erreur musique", e));
+      }
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, [showCountdown]);
+
+  if (showCountdown) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: '#000000', color: '#ff3333', fontFamily: 'monospace', padding: '20px', textAlign: 'center', boxSizing: 'border-box' }}>
+        <audio ref={chronoSound} src="/audio/24_chrono.mp3" preload="auto" />
+        <div style={{ fontSize: '6rem', fontWeight: 'bold', letterSpacing: '0.1em', textShadow: '0 0 20px #ff0000', fontFamily: 'monospace' }}>
+          00:00:{countdownText}
+        </div>
+        <p style={{ color: 'rgba(255, 50, 50, 0.6)', fontSize: '1rem', marginTop: '20px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+          Initialisation de son univers...
+        </p>
+      </div>
+    );
+  }
 
   if (!hasStarted) {
     return (
@@ -39,7 +77,7 @@ export default function Home() {
           .animated-title { animation: pulseText 2s infinite alternate ease-in-out; }
           .animated-btn:hover { background-color: rgba(147, 51, 234, 0.2) !important; transform: scale(1.05); }
         `}</style>
-        <h1 className="animated-title" style={{ fontSize: '2.5rem', color: '#e9d5ff', letterSpacing: '0.2em', marginBottom: '16px', textTransform: 'uppercase' }}>POUR TOI MON BEBE D'AMOUR</h1>
+        <h1 className="animated-title" style={{ fontSize: '2.5rem', color: '#e9d5ff', letterSpacing: '0.2em', marginBottom: '16px', textTransform: 'uppercase' }}>KALI — 14.07.2003</h1>
         <p style={{ color: 'rgba(216, 180, 254, 0.6)', fontSize: '0.9rem', marginBottom: '32px', maxWidth: '350px' }}>
           Un petit espace secret pour célébrer une personne unique.
         </p>
@@ -54,19 +92,19 @@ export default function Home() {
     <div style={{ minHeight: '100vh', backgroundColor: '#05020a', color: '#ffffff', fontFamily: 'serif', position: 'relative', overflowX: 'hidden' }}>
       <audio ref={bgMusic} src="/audio/those_eyes.mp3" preload="auto" loop />
       
-      {/* BARRE DE NAVIGATION ANIMÉE */}
+      {/* BARRE DE NAVIGATION ANIMÉE AVEC LA BONNE POLICE */}
       <nav style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(11, 5, 20, 0.7)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(147, 51, 234, 0.2)', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxSizing: 'border-box' }}>
-        <div style={{ color: '#e9d5ff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '0.1em', textShadow: '0 0 8px rgba(168,85,247,0.4)' }}>WELCOME TO MY ANGEL'S UNIVERSE 💜</div>
-        <div style={{ display: 'flex', gap: '24px' }}>
+        <div style={{ color: '#ffffff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>WELCOME TO MY ANGEL'S UNIVERSE 🤍</div>
+        <div style={{ display: 'flex', gap: '16px' }}>
           {[
             { id: 'letter', label: 'Ma Lettre' },
-            { id: 'gallery', label: 'Galérie' },
+            { id: 'gallery', label: 'Galerie' },
             { id: 'wishes', label: 'Vœux & Bougies' }
           ].map((item) => (
             <button
               key={item.id}
               onClick={() => setActiveSection(item.id)}
-              style={{ background: 'none', border: 'none', color: activeSection === item.id ? '#e9d5ff' : 'rgba(243, 232, 255, 0.4)', fontWeight: activeSection === item.id ? 'bold' : 'normal', borderBottom: activeSection === item.id ? '2px solid #c084fc' : 'none', paddingBottom: '4px', cursor: 'pointer', fontSize: '0.85rem', transition: 'all 0.3s ease', textSTransform: 'uppercase', letterSpacing: '0.1em', minWidth: 'max-content', paddingLeft: '8px', paddingRight: '8px' }}
+              style={{ background: 'none', border: 'none', color: activeSection === item.id ? '#e9d5ff' : 'rgba(243, 232, 255, 0.4)', fontWeight: activeSection === item.id ? 'bold' : 'normal', borderBottom: activeSection === item.id ? '2px solid #c084fc' : 'none', paddingBottom: '4px', cursor: 'pointer', fontSize: '0.85rem', transition: 'all 0.3s ease', textTransform: 'uppercase', letterSpacing: '0.1em', minWidth: 'max-content', paddingLeft: '8px', paddingRight: '8px' }}
             >
               {item.label}
             </button>
@@ -76,7 +114,7 @@ export default function Home() {
 
       <main style={{ transition: 'all 0.5s ease' }}>
         {activeSection === 'letter' && <LetterSection />}
-        {activeSection === 'gallery' && <GallerySection />}
+        {activeSection === 'gallery' && <GallerySection bgMusicRef={bgMusic} />}
         {activeSection === 'wishes' && <WishesSection />}
       </main>
     </div>
@@ -84,7 +122,7 @@ export default function Home() {
 }
 
 // ==========================================
-// COMPOSANT : MA LETTRE ANIMÉE
+// COMPOSANT : GALERIE IMMERSIVE
 // ==========================================
 export function LetterSection() {
   const paragraphs = [
@@ -113,11 +151,30 @@ export function LetterSection() {
   );
 }
 // ==========================================
-// COMPOSANT : GALERIE IMMERSIVE
+// COMPOSANT : GALERIE INTELLIGENTE AUDIO
 // ==========================================
-export function GallerySection() {
+export function GallerySection({ bgMusicRef }: { bgMusicRef: React.MutableRefObject<HTMLAudioElement | null> }) {
   const [index, setIndex] = useState(0);
   const sfxPage = useRef<HTMLAudioElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (MEDIAS[index].type === 'video') {
+      if (bgMusicRef.current) bgMusicRef.current.pause();
+    } else {
+      if (bgMusicRef.current && bgMusicRef.current.paused) {
+        bgMusicRef.current.play().catch(e => console.log(e));
+      }
+    }
+  }, [index, bgMusicRef]);
+
+  useEffect(() => {
+    return () => {
+      if (bgMusicRef.current && bgMusicRef.current.paused) {
+        bgMusicRef.current.play().catch(e => console.log(e));
+      }
+    };
+  }, [bgMusicRef]);
 
   const changePage = (direction: number) => {
     if (direction === 1 && index < MEDIAS.length - 1) {
@@ -130,7 +187,7 @@ export function GallerySection() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #140727, #3b1354, #140727)', paddingTop: '150px', paddingBottom: '40px', paddingLeft: '16px', paddingRight: '16px', boxSizing: 'border-box' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #140727, #3b1354, #140727)', paddingTop: '160px', paddingBottom: '40px', paddingLeft: '16px', paddingRight: '16px', boxSizing: 'border-box' }}>
       <audio ref={sfxPage} src="/audio/button.mp3" preload="auto" />
       <style>{`
         @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
@@ -145,11 +202,10 @@ export function GallerySection() {
         {MEDIAS[index] ? (
           <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             {MEDIAS[index].type === 'image' ? (
-              <img src={MEDIAS[index].url} alt="Souvenirs" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={MEDIAS[index].url} alt="Souvenir" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             ) : (
-              <video src={MEDIAS[index].url} autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <video ref={videoRef} src={MEDIAS[index].url} autoPlay controls loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             )}
-            {/* Boîte de commentaire en bas de l'image */}
             {MEDIAS[index].caption && (
               <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', backgroundColor: 'rgba(5, 2, 10, 0.75)', backdropFilter: 'blur(6px)', padding: '16px', boxSizing: 'border-box', borderTop: '1px solid rgba(192, 132, 252, 0.2)', textAlign: 'center' }}>
                 <p style={{ margin: 0, color: '#e9d5ff', fontSize: '0.95rem', fontStyle: 'italic', lineHeight: '1.4' }}>
@@ -229,11 +285,11 @@ export function WishesSection() {
 
       {allExtinguished && (
         <div className="reveal-box" style={{ padding: '32px', backgroundColor: 'rgba(35, 11, 48, 0.6)', border: '1px solid rgba(192, 132, 252, 0.5)', borderRadius: '24px', maxWidth: '380px', width: '100%', boxSizing: 'border-box', boxShadow: '0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(168,85,247,0.3)', textAlign: 'center' }}>
-          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire Dayone ! 🎉</h4>
-          <p style={{ fontSize: '0.8rem', color: '#c084fc', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 'bold' }}>14 JUILLET 2026</p>
+          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire Kali ! 🎉</h4>
+          <p style={{ fontSize: '0.8rem', color: '#c084fc', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 'bold' }}>14 JUILLET 2003</p>
           <div style={{ width: '60px', height: '1px', backgroundColor: 'rgba(168, 85, 247, 0.4)', margin: '16px auto' }} />
-          <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.95)', marginBottom: '12px', lineHeight: '1.6' }}>Merci d'être la lumière que tu es chaque jour pour moi.</p>
-          <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.9rem' }}>Avec toute mon amour,</p>
+          <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.95)', marginBottom: '12px', lineHeight: '1.6' }}>Merci d'être la lumière que tu es chaque jour.</p>
+          <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.9rem' }}>Avec toute ma tendresse,</p>
           <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#ffffff', marginTop: '6px', letterSpacing: '0.05em' }}>Jaël 💜</p>
         </div>
       )}
