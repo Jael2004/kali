@@ -53,11 +53,11 @@ export default function Home() {
       
       {/* BARRE DE NAVIGATION ANIMÉE */}
       <nav style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(11, 5, 20, 0.7)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(147, 51, 234, 0.2)', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxSizing: 'border-box' }}>
-        <div style={{ color: '#e9d5ff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '0.1em', textShadow: '0 0 8px rgba(168,85,247,0.4)' }}>KALI'S DAY 💜</div>
+        <div style={{ color: '#e9d5ff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '0.1em', textShadow: '0 0 8px rgba(168,85,247,0.4)' }}>WELCOME TO MY ANGEL'S UNIVERSE 💜</div>
         <div style={{ display: 'flex', gap: '24px' }}>
           {[
             { id: 'letter', label: 'Ma Lettre' },
-            { id: 'gallery', label: 'Galerie' },
+            { id: 'gallery', label: 'Galérie' },
             { id: 'wishes', label: 'Vœux & Bougies' }
           ].map((item) => (
             <button
@@ -218,11 +218,11 @@ export function WishesSection() {
 
       {allExtinguished && (
         <div className="reveal-box" style={{ padding: '32px', backgroundColor: 'rgba(35, 11, 48, 0.6)', border: '1px solid rgba(192, 132, 252, 0.5)', borderRadius: '24px', maxWidth: '380px', width: '100%', boxSizing: 'border-box', boxShadow: '0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(168,85,247,0.3)', textAlign: 'center' }}>
-          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire Kali ! 🎉</h4>
-          <p style={{ fontSize: '0.8rem', color: '#c084fc', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 'bold' }}>14 JUILLET 2003</p>
+          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire Dayone ! 🎉</h4>
+          <p style={{ fontSize: '0.8rem', color: '#c084fc', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 'bold' }}>14 JUILLET 2026</p>
           <div style={{ width: '60px', height: '1px', backgroundColor: 'rgba(168, 85, 247, 0.4)', margin: '16px auto' }} />
-          <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.95)', marginBottom: '12px', lineHeight: '1.6' }}>Merci d'être la lumière que tu es chaque jour.</p>
-          <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.9rem' }}>Avec toute ma tendresse,</p>
+          <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.95)', marginBottom: '12px', lineHeight: '1.6' }}>Merci d'être la lumière que tu es chaque jour pour moi.</p>
+          <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.9rem' }}>Avec toute mon amour,</p>
           <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: '#ffffff', marginTop: '6px', letterSpacing: '0.05em' }}>Jaël 💜</p>
         </div>
       )}
