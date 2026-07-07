@@ -16,6 +16,7 @@ const MEDIAS = [
   { type: 'image', url: '/images/3.png', cation: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
 ];
 
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState('letter');
   const [hasStarted, setHasStarted] = useState(false);
@@ -25,10 +26,41 @@ export default function Home() {
   const bgMusic = useRef<HTMLAudioElement | null>(null);
   const chronoSound = useRef<HTMLAudioElement | null>(null);
 
+  // ÉCOUTEUR DES TOUCHES DU CLAVIER (Home, End, PgUp, PgDn)
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const sections = ['letter', 'gallery', 'wishes'];
+      const currentIndex = sections.indexOf(activeSection);
+
+      if (e.key === 'Home') {
+        e.preventDefault();
+        setActiveSection('letter');
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        setActiveSection('wishes');
+      } else if (e.key === 'PageDown') {
+        e.preventDefault();
+        if (currentIndex < sections.length - 1) {
+          setActiveSection(sections[currentIndex + 1]);
+        }
+      } else if (e.key === 'PageUp') {
+        e.preventDefault();
+        if (currentIndex > 0) {
+          setActiveSection(sections[currentIndex - 1]);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [hasStarted, activeSection]);
+
   const startWebsite = () => {
     setShowCountdown(true);
     if (chronoSound.current) {
-      chronoSound.current.volume = 0.8;
+      chronoSound.current.volume = 0.9;
       chronoSound.current.play().catch(e => console.log("Erreur chrono", e));
     }
   };
@@ -42,7 +74,7 @@ export default function Home() {
       setShowCountdown(false);
       setHasStarted(true);
       if (bgMusic.current) {
-        bgMusic.current.volume = 0.7; // Volume réglé plus fort !
+        bgMusic.current.volume = 0.7;
         bgMusic.current.play().catch(e => console.log("Erreur musique", e));
       }
     }, 3000);
@@ -77,12 +109,12 @@ export default function Home() {
           .animated-title { animation: pulseText 2s infinite alternate ease-in-out; }
           .animated-btn:hover { background-color: rgba(147, 51, 234, 0.2) !important; transform: scale(1.05); }
         `}</style>
-        <h1 className="animated-title" style={{ fontSize: '2.5rem', color: '#e9d5ff', letterSpacing: '0.2em', marginBottom: '16px', textTransform: 'uppercase' }}>KALI — 14.07.2003</h1>
+        <h1 className="animated-title" style={{ fontSize: '2.5rem', color: '#e9d5ff', letterSpacing: '0.2em', marginBottom: '16px', textTransform: 'uppercase' }}>POUR MON ANGE...En tout cas je l'accepte tu en es une 🤍</h1>
         <p style={{ color: 'rgba(216, 180, 254, 0.6)', fontSize: '0.9rem', marginBottom: '32px', maxWidth: '350px' }}>
-          Un petit espace secret pour célébrer une personne unique.
+          Un petit espace secret pour te célébrer DAYONE🥹❤️🔐.
         </p>
         <button onClick={startWebsite} className="animated-btn" style={{ padding: '12px 32px', backgroundColor: 'transparent', border: '1px solid rgba(147, 51, 234, 0.6)', borderRadius: '9999px', color: '#c084fc', fontSize: '1rem', letterSpacing: '0.1em', cursor: 'pointer', transition: 'all 0.4s ease', animation: 'floatBtn 1.5s infinite alternate ease-in-out' }}>
-          Entrer dans notre histoire 💜
+          Entre ici...j'ai des surprises pour toi 💜
         </button>
       </div>
     );
@@ -121,9 +153,7 @@ export default function Home() {
   );
 }
 
-// ==========================================
-// COMPOSANT : GALERIE IMMERSIVE
-// ==========================================
+
 export function LetterSection() {
   const paragraphs = [
     "Mon bébé d'amour,",
@@ -131,6 +161,7 @@ export function LetterSection() {
     "Regarder ces photos et ces vidéos de nous me rappelle à quel point chaque instant passé à tes côtés est précieux. Ta présence, ton rire, ta manière unique de voir les choses et de tenir à moi... tout chez toi apporte une douceur immense à mon quotidien.",
     "Je voulais profiter de cet espace secret pour te dire merci. Merci d'être exactement qui tu es, avec cette lumière qui n'appartient qu'à toi. Je te souhaite le plus merveilleux des anniversaires, rempli de rires, de projets fous et de tout le bonheur que tu mérites tant.",
     "Prends soin de toi, continue de briller.",
+    "Je n'ai pas grand chose à te donner retiens juste que tu es TOUT pour Moi",
     "Avec toute ma tendresse, ton emmerdeuse Jaël 💜"
   ];
 
@@ -150,6 +181,7 @@ export function LetterSection() {
     </div>
   );
 }
+
 // ==========================================
 // COMPOSANT : GALERIE INTELLIGENTE AUDIO
 // ==========================================
@@ -198,17 +230,19 @@ export function GallerySection({ bgMusicRef }: { bgMusicRef: React.MutableRefObj
       <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre complicité</h2>
       <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les rires restent gravés.</p>
       
-      <div className="media-container" key={index} style={{ position: 'relative', width: '100%', maxWidth: '550px', aspectRatio: '4/3', backgroundColor: '#090412', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(168,85,247,0.15)', border: '1px solid rgba(192, 132, 252, 0.3)', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="media-container" key={index} style={{ position: 'relative', width: '100%', maxWidth: '450px', minHeight: '400px', maxHeight: '75vh', backgroundColor: '#090412', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(168,85,247,0.15)', border: '1px solid rgba(192, 132, 252, 0.3)', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {MEDIAS[index] ? (
-          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-            {MEDIAS[index].type === 'image' ? (
-              <img src={MEDIAS[index].url} alt="Souvenir" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            ) : (
-              <video ref={videoRef} src={MEDIAS[index].url} autoPlay controls loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            )}
+          <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '100%', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+              {MEDIAS[index].type === 'image' ? (
+                <img src={MEDIAS[index].url} alt="Souvenir" style={{ width: '100%', maxHeight: '55vh', objectFit: 'contain', borderRadius: '24px 24px 0 0' }} />
+              ) : (
+                <video ref={videoRef} src={MEDIAS[index].url} autoPlay controls loop playsInline style={{ width: '100%', maxHeight: '55vh', objectFit: 'contain', borderRadius: '24px 24px 0 0' }} />
+              )}
+            </div>
             {MEDIAS[index].caption && (
-              <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', backgroundColor: 'rgba(5, 2, 10, 0.75)', backdropFilter: 'blur(6px)', padding: '16px', boxSizing: 'border-box', borderTop: '1px solid rgba(192, 132, 252, 0.2)', textAlign: 'center' }}>
-                <p style={{ margin: 0, color: '#e9d5ff', fontSize: '0.95rem', fontStyle: 'italic', lineHeight: '1.4' }}>
+              <div style={{ width: '100%', backgroundColor: 'rgba(15, 8, 28, 0.85)', backdropFilter: 'blur(8px)', padding: '16px', boxSizing: 'border-box', borderTop: '1px solid rgba(192, 132, 252, 0.25)', textAlign: 'center' }}>
+                <p style={{ margin: 0, color: '#e9d5ff', fontSize: '0.95rem', fontStyle: 'italic', lineHeight: '1.5' }}>
                   {MEDIAS[index].caption}
                 </p>
               </div>
@@ -227,6 +261,8 @@ export function GallerySection({ bgMusicRef }: { bgMusicRef: React.MutableRefObj
     </div>
   );
 }
+
+
 
 // ==========================================
 // COMPOSANT : VŒUX & BOUGIES INTERACTIVES
@@ -280,13 +316,13 @@ export function WishesSection() {
       </div>
 
       <h3 style={{ fontSize: '1.2rem', color: '#e9d5ff', letterSpacing: '0.1em', marginBottom: '48px', textAlign: 'center' }}>
-        {allExtinguished ? "Tes vœux vont s'accomplir... ✨" : "Éteins chaque lumière et fais un vœu..."}
+        {allExtinguished ? "Tes vœux vont s'accomplir... N'oublie de citer ta relation avec Dieu ohh Madame ✨" : "Éteins chaque lumière et fais un vœu..."}
       </h3>
 
       {allExtinguished && (
         <div className="reveal-box" style={{ padding: '32px', backgroundColor: 'rgba(35, 11, 48, 0.6)', border: '1px solid rgba(192, 132, 252, 0.5)', borderRadius: '24px', maxWidth: '380px', width: '100%', boxSizing: 'border-box', boxShadow: '0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(168,85,247,0.3)', textAlign: 'center' }}>
-          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire Kali ! 🎉</h4>
-          <p style={{ fontSize: '0.8rem', color: '#c084fc', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 'bold' }}>14 JUILLET 2003</p>
+          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire mon bébé d'Amour🥺❤️! 🎉</h4>
+          <p style={{ fontSize: '0.8rem', color: '#c084fc', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 'bold' }}></p>
           <div style={{ width: '60px', height: '1px', backgroundColor: 'rgba(168, 85, 247, 0.4)', margin: '16px auto' }} />
           <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.95)', marginBottom: '12px', lineHeight: '1.6' }}>Merci d'être la lumière que tu es chaque jour.</p>
           <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.9rem' }}>Avec toute ma tendresse,</p>
@@ -296,3 +332,4 @@ export function WishesSection() {
     </div>
   );
 }
+
