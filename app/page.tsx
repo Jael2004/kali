@@ -11,7 +11,7 @@ const MEDIAS = [
   { type: 'image', url: '/images/5.jpg', caption: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
   { type: 'image', url: '/images/6.jpeg', caption: "Notre deuxième sortie ensemble, à refaire très vite sur Accra, Assini, Zanzibar le tour du monde en fait 🙃❤️" },
   { type: 'image', url: '/images/2.png', caption: "Reste toujours la personne extraordinaire que tu es"},
-  { type: 'video', url: '/images/12.mp4', caption: "Vois-tu comment t'es rayonnante, magnifique, toute belle...j'en passe, une DIVA en fait!"},
+  { type: 'video', url: '/images/8.mp4', caption: "Vois-tu comment t'es rayonnante, magnifique, toute belle...j'en passe, une DIVA en fait!"},
   { type: 'video', url: '/images/11.mp4', caption: "Je souris toujours en nous regardant. MERCI❤️"},
   { type: 'image', url: '/images/3.png', caption: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
 ];
