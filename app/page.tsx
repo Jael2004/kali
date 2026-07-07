@@ -25,7 +25,7 @@ export default function Home() {
   const bgMusic = useRef<HTMLAudioElement | null>(null);
   const chronoSound = useRef<HTMLAudioElement | null>(null);
 
-  // CORRECTIF CLAVIER : ÉCOUTEUR AMÉLIORÉ ET SÉCURISÉ
+  // CORRECTIF CLAVIER ULTIME : FOCUS GLOBAL ET FLÈCHES AJOUTÉES
   useEffect(() => {
     if (!hasStarted) return;
 
@@ -33,31 +33,30 @@ export default function Home() {
       const sections = ['letter', 'gallery', 'wishes'];
       const currentIndex = sections.indexOf(activeSection);
 
+      // Touches globales de navigation entre les onglets
       if (e.key === 'Home') {
         e.preventDefault();
-        e.stopPropagation();
         setActiveSection('letter');
       } else if (e.key === 'End') {
         e.preventDefault();
-        e.stopPropagation();
         setActiveSection('wishes');
-      } else if (e.key === 'PageDown') {
+      } else if (e.key === 'PageDown' || e.key === 'ArrowRight' || e.key === ' ') {
         e.preventDefault();
-        e.stopPropagation();
         if (currentIndex < sections.length - 1) {
           setActiveSection(sections[currentIndex + 1]);
         }
-      } else if (e.key === 'PageUp') {
+      } else if (e.key === 'PageUp' || e.key === 'ArrowLeft') {
         e.preventDefault();
-        e.stopPropagation();
         if (currentIndex > 0) {
           setActiveSection(sections[currentIndex - 1]);
         }
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown, { capture: true });
-    return () => window.removeEventListener('keydown', handleKeyDown, { capture: true });
+    // On attache l'écouteur sur le document entier et on force le focus
+    window.focus();
+    document.addEventListener('keydown', handleKeyDown, true);
+    return () => document.removeEventListener('keydown', handleKeyDown, true);
   }, [hasStarted, activeSection]);
 
   const startWebsite = () => {
@@ -99,7 +98,7 @@ export default function Home() {
           00:00:{countdownText}
         </div>
         <p style={{ color: 'rgba(255, 50, 50, 0.6)', fontSize: '1rem', marginTop: '20px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-          Initialisation de son univers...
+          Initialisation de ton univers...
         </p>
       </div>
     );
@@ -129,6 +128,7 @@ export default function Home() {
     <div style={{ minHeight: '100vh', backgroundColor: '#05020a', color: '#ffffff', fontFamily: 'serif', position: 'relative', overflowX: 'hidden' }}>
       <audio ref={bgMusic} src="/audio/those_eyes.mp3" preload="auto" loop />
       
+      {/* BARRE DE NAVIGATION ANIMÉE AVEC LA BONNE POLICE */}
       <nav style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(11, 5, 20, 0.7)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(147, 51, 234, 0.2)', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxSizing: 'border-box' }}>
         <div style={{ color: '#ffffff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>WELCOME TO MY ANGEL'S UNIVERSE 🤍</div>
         <div style={{ display: 'flex', gap: '16px' }}>
@@ -156,6 +156,7 @@ export default function Home() {
     </div>
   );
 }
+
 export function LetterSection() {
   const paragraphs = [
     "Mon bébé d'amour,",
@@ -286,7 +287,8 @@ export function WishesSection() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #230b30, #0a0410, #000000)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '24px', paddingRight: '24px', boxSizing: 'border-box' }}>
-      <audio ref={sfxClick} src="/audio/click.mp3" preload="auto" />
+      {/* VOS SONS DÉFINITIFS : PRÉPARATION DU SON BUTTON.MP3 POUR LE CLIC */}
+      <audio ref={sfxClick} src="/audio/button.mp3" preload="auto" />
       <style>{`
         @keyframes flameWobble { 0% { transform: scale(1) rotate(-2deg); } 100% { transform: scale(1.15) rotate(2deg); } }
         @keyframes cardReveal { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
@@ -313,12 +315,12 @@ export function WishesSection() {
       </div>
 
       <h3 style={{ fontSize: '1.2rem', color: '#e9d5ff', letterSpacing: '0.1em', marginBottom: '48px', textAlign: 'center' }}>
-        {allExtinguished ? "Tes vœux vont s'accomplir... N'oublie de citer ta relation avec Dieu ohh Madame ✨" : "Éteins chaque lumière et fais un vœu..."}
+        {allExtinguished ? "Tes vœux vont s'accomplir... J'espère que t'as pas oublié de citer ta relation avec Dieu ohh Madame ✨" : "Éteins chaque lumière et fais un vœu..."}
       </h3>
 
       {allExtinguished && (
         <div className="reveal-box" style={{ padding: '32px', backgroundColor: 'rgba(35, 11, 48, 0.6)', border: '1px solid rgba(192, 132, 252, 0.5)', borderRadius: '24px', maxWidth: '380px', width: '100%', boxSizing: 'border-box', boxShadow: '0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(168,85,247,0.3)', textAlign: 'center' }}>
-          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}> Joyeux Anniversaire mon Bébé d'Amour🥺❤️! 🎉</h4>
+          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire mon Bébé d'Amour🥺❤️! 🎉</h4>
           <div style={{ width: '60px', height: '1px', backgroundColor: 'rgba(168, 85, 247, 0.4)', margin: '16px auto' }} />
           <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.95)', marginBottom: '12px', lineHeight: '1.6' }}>Merci d'être la lumière que tu es chaque jour.</p>
           <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.9rem' }}>Avec toute ma tendresse,</p>
