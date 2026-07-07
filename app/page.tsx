@@ -7,10 +7,13 @@ import confetti from 'canvas-confetti';
 // LISTE DES MÉDIAS (PHOTOS / VIDÉOS)
 // ==========================================
 const MEDIAS = [
-  { type: 'image', url: '/images/1.jpg' },
-  { type: 'video', url: '/images/12.mp4' },
-  { type: 'image', url: '/images/3.jng' },
-  { type: 'image', url: '/images/4.jpg' },
+  { type: 'image', url: '/images/1.jpg', caption: "Ton rire qui illumine toutes mes journées😂" }, 
+  { type: 'image', url: '/images/5.jpg', cation: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
+  { type: 'image', url: '/images/6.jpg', caption: "Notre deuxième sortie ensemble, à refaire très vite sur Accra, Assini, Zanzibar le tour du monde en fait 🙃❤️" },
+  { type: 'image', url: '/images/3.png', cation: "Reste toujours la personne extraordinaire que tu es"},
+  { type: 'video', url: '/images/12.mp4', cation: "Vois-tu comment t'es rayonnante, magnifique, tout belle...j'en passe, une DIVA en fait!"},
+  { type: 'video', url: '/images/11.mp4', cation: "Je souris toujours en nous regardant. MERCI❤️"},
+  { type: 'image', url: '/images/2.png', cation: "Ma magnifique skinny brown skin girl😻 Tu as aura de mznnéquin même iyann😭🤌❤️" },
 ];
 
 export default function Home() {
@@ -63,7 +66,7 @@ export default function Home() {
             <button
               key={item.id}
               onClick={() => setActiveSection(item.id)}
-              style={{ background: 'none', border: 'none', color: activeSection === item.id ? '#e9d5ff' : 'rgba(243, 232, 255, 0.4)', fontWeight: activeSection === item.id ? 'bold' : 'normal', borderBottom: activeSection === item.id ? '2px solid #c084fc' : 'none', paddingBottom: '4px', cursor: 'pointer', fontSize: '0.9rem', transition: 'all 0.3s ease', textShadow: activeSection === item.id ? '0 0 10px rgba(192,132,252,0.6)' : 'none' }}
+              style={{ background: 'none', border: 'none', color: activeSection === item.id ? '#e9d5ff' : 'rgba(243, 232, 255, 0.4)', fontWeight: activeSection === item.id ? 'bold' : 'normal', borderBottom: activeSection === item.id ? '2px solid #c084fc' : 'none', paddingBottom: '4px', cursor: 'pointer', fontSize: '0.85rem', transition: 'all 0.3s ease', textSTransform: 'uppercase', letterSpacing: '0.1em', minWidth: 'max-content', paddingLeft: '8px', paddingRight: '8px' }}
             >
               {item.label}
             </button>
@@ -127,8 +130,8 @@ export function GallerySection() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #140727, #3b1354, #140727)', paddingTop: '100px', paddingBottom: '40px', paddingLeft: '16px', paddingRight: '16px', boxSizing: 'border-box' }}>
-      <audio ref={sfxPage} src="/audio/page-flip.mp3" preload="auto" />
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'linear-gradient(to bottom, #140727, #3b1354, #140727)', paddingTop: '150px', paddingBottom: '40px', paddingLeft: '16px', paddingRight: '16px', boxSizing: 'border-box' }}>
+      <audio ref={sfxPage} src="/audio/button.mp3" preload="auto" />
       <style>{`
         @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .media-container { animation: scaleIn 0.5s ease-out; }
@@ -138,13 +141,21 @@ export function GallerySection() {
       <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre complicité</h2>
       <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les rires restent gravés.</p>
       
-      <div className="media-container" key={index} style={{ width: '100%', maxWidth: '550px', aspectRatio: '4/3', backgroundColor: '#090412', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(168,85,247,0.15)', border: '1px solid rgba(192, 132, 252, 0.3)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="media-container" key={index} style={{ position: 'relative', width: '100%', maxWidth: '550px', aspectRatio: '4/3', backgroundColor: '#090412', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(168,85,247,0.15)', border: '1px solid rgba(192, 132, 252, 0.3)', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {MEDIAS[index] ? (
-          <div style={{ width: '100%', height: '100%' }}>
+          <div style={{ width: '100%', height: '100%', position: 'relative' }}>
             {MEDIAS[index].type === 'image' ? (
-              <img src={MEDIAS[index].url} alt="Souvenir" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={MEDIAS[index].url} alt="Souvenirs" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             ) : (
               <video src={MEDIAS[index].url} autoPlay muted loop playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            )}
+            {/* Boîte de commentaire en bas de l'image */}
+            {MEDIAS[index].caption && (
+              <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', backgroundColor: 'rgba(5, 2, 10, 0.75)', backdropFilter: 'blur(6px)', padding: '16px', boxSizing: 'border-box', borderTop: '1px solid rgba(192, 132, 252, 0.2)', textAlign: 'center' }}>
+                <p style={{ margin: 0, color: '#e9d5ff', fontSize: '0.95rem', fontStyle: 'italic', lineHeight: '1.4' }}>
+                  {MEDIAS[index].caption}
+                </p>
+              </div>
             )}
           </div>
         ) : (
