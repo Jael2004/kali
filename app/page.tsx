@@ -8,14 +8,13 @@ import confetti from 'canvas-confetti';
 // ==========================================
 const MEDIAS = [
   { type: 'image', url: '/images/1.jpg', caption: "Ton rire qui illumine toutes mes journées😂" }, 
-  { type: 'image', url: '/images/5.jpeg', cation: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
+  { type: 'image', url: '/images/5.jpeg', caption: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
   { type: 'image', url: '/images/6.jpeg', caption: "Notre deuxième sortie ensemble, à refaire très vite sur Accra, Assini, Zanzibar le tour du monde en fait 🙃❤️" },
-  { type: 'image', url: '/images/2.png', cation: "Reste toujours la personne extraordinaire que tu es"},
-  { type: 'video', url: '/images/12.mp4', cation: "Vois-tu comment t'es rayonnante, magnifique, tout belle...j'en passe, une DIVA en fait!"},
-  { type: 'video', url: '/images/11.mp4', cation: "Je souris toujours en nous regardant. MERCI❤️"},
-  { type: 'image', url: '/images/3.png', cation: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
+  { type: 'image', url: '/images/2.png', caption: "Reste toujours la personne extraordinaire que tu es"},
+  { type: 'video', url: '/images/12.mp4', caption: "Vois-tu comment t'es rayonnante, magnifique, tout belle...j'en passe, une DIVA en fait!"},
+  { type: 'video', url: '/images/11.mp4', caption: "Je souris toujours en nous regardant. MERCI❤️"},
+  { type: 'image', url: '/images/3.png', caption: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
 ];
-
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('letter');
@@ -26,7 +25,7 @@ export default function Home() {
   const bgMusic = useRef<HTMLAudioElement | null>(null);
   const chronoSound = useRef<HTMLAudioElement | null>(null);
 
-  // ÉCOUTEUR DES TOUCHES DU CLAVIER (Home, End, PgUp, PgDn)
+  // CORRECTIF CLAVIER : ÉCOUTEUR AMÉLIORÉ ET SÉCURISÉ
   useEffect(() => {
     if (!hasStarted) return;
 
@@ -36,31 +35,36 @@ export default function Home() {
 
       if (e.key === 'Home') {
         e.preventDefault();
+        e.stopPropagation();
         setActiveSection('letter');
       } else if (e.key === 'End') {
         e.preventDefault();
+        e.stopPropagation();
         setActiveSection('wishes');
       } else if (e.key === 'PageDown') {
         e.preventDefault();
+        e.stopPropagation();
         if (currentIndex < sections.length - 1) {
           setActiveSection(sections[currentIndex + 1]);
         }
       } else if (e.key === 'PageUp') {
         e.preventDefault();
+        e.stopPropagation();
         if (currentIndex > 0) {
           setActiveSection(sections[currentIndex - 1]);
         }
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown, { capture: true });
+    return () => window.removeEventListener('keydown', handleKeyDown, { capture: true });
   }, [hasStarted, activeSection]);
 
   const startWebsite = () => {
     setShowCountdown(true);
     if (chronoSound.current) {
       chronoSound.current.volume = 0.9;
+      chronoSound.current.load();
       chronoSound.current.play().catch(e => console.log("Erreur chrono", e));
     }
   };
@@ -90,7 +94,8 @@ export default function Home() {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundColor: '#000000', color: '#ff3333', fontFamily: 'monospace', padding: '20px', textAlign: 'center', boxSizing: 'border-box' }}>
         <audio ref={chronoSound} src="/audio/24_chrono.mp3" preload="auto" />
-        <div style={{ fontSize: '6rem', fontWeight: 'bold', letterSpacing: '0.1em', textShadow: '0 0 20px #ff0000', fontFamily: 'monospace' }}>
+        <h2 style={{ color: '#ffffff', fontSize: '2rem', fontFamily: 'serif', letterSpacing: '0.1em', marginBottom: '24px', fontWeight: 'normal' }}>14 Juillet 2026</h2>
+        <div style={{ fontSize: '6rem', fontWeight: 'bold', letterSpacing: '0.1em', textShadow: '0 0 20px #ff0000', fontFamily: 'monospace', lineHeight: '1' }}>
           00:00:{countdownText}
         </div>
         <p style={{ color: 'rgba(255, 50, 50, 0.6)', fontSize: '1rem', marginTop: '20px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
@@ -124,7 +129,6 @@ export default function Home() {
     <div style={{ minHeight: '100vh', backgroundColor: '#05020a', color: '#ffffff', fontFamily: 'serif', position: 'relative', overflowX: 'hidden' }}>
       <audio ref={bgMusic} src="/audio/those_eyes.mp3" preload="auto" loop />
       
-      {/* BARRE DE NAVIGATION ANIMÉE AVEC LA BONNE POLICE */}
       <nav style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(11, 5, 20, 0.7)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(147, 51, 234, 0.2)', padding: '16px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxSizing: 'border-box' }}>
         <div style={{ color: '#ffffff', fontWeight: 'bold', fontSize: '1.1rem', letterSpacing: '0.1em', textTransform: 'uppercase' }}>WELCOME TO MY ANGEL'S UNIVERSE 🤍</div>
         <div style={{ display: 'flex', gap: '16px' }}>
@@ -152,8 +156,6 @@ export default function Home() {
     </div>
   );
 }
-
-
 export function LetterSection() {
   const paragraphs = [
     "Mon bébé d'amour,",
@@ -161,7 +163,8 @@ export function LetterSection() {
     "Regarder ces photos et ces vidéos de nous me rappelle à quel point chaque instant passé à tes côtés est précieux. Ta présence, ton rire, ta manière unique de voir les choses et de tenir à moi... tout chez toi apporte une douceur immense à mon quotidien.",
     "Je voulais profiter de cet espace secret pour te dire merci. Merci d'être exactement qui tu es, avec cette lumière qui n'appartient qu'à toi. Je te souhaite le plus merveilleux des anniversaires, rempli de rires, de projets fous et de tout le bonheur que tu mérites tant.",
     "Prends soin de toi, continue de briller.",
-    "Je n'ai pas grand chose à te donner retiens juste que tu es TOUT pour Moi",
+       "Je n'ai pas grand chose à te donner retiens juste que tu es TOUT pour Moi",
+    
     "Avec toute ma tendresse, ton emmerdeuse Jaël 💜"
   ];
 
@@ -182,9 +185,6 @@ export function LetterSection() {
   );
 }
 
-// ==========================================
-// COMPOSANT : GALERIE INTELLIGENTE AUDIO
-// ==========================================
 export function GallerySection({ bgMusicRef }: { bgMusicRef: React.MutableRefObject<HTMLAudioElement | null> }) {
   const [index, setIndex] = useState(0);
   const sfxPage = useRef<HTMLAudioElement | null>(null);
@@ -227,8 +227,8 @@ export function GallerySection({ bgMusicRef }: { bgMusicRef: React.MutableRefObj
         .nav-btn:hover:not(:disabled) { background-color: #6b21a8 !important; transform: translateY(-2px); }
       `}</style>
       
-      <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre complicité</h2>
-      <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les rires restent gravés.</p>
+      <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre...(trouve le terme adéquat)</h2>
+      <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les moments restent gravés.</p>
       
       <div className="media-container" key={index} style={{ position: 'relative', width: '100%', maxWidth: '450px', minHeight: '400px', maxHeight: '75vh', backgroundColor: '#090412', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(168,85,247,0.15)', border: '1px solid rgba(192, 132, 252, 0.3)', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {MEDIAS[index] ? (
@@ -261,9 +261,6 @@ export function GallerySection({ bgMusicRef }: { bgMusicRef: React.MutableRefObj
     </div>
   );
 }
-
-
-
 // ==========================================
 // COMPOSANT : VŒUX & BOUGIES INTERACTIVES
 // ==========================================
@@ -321,8 +318,7 @@ export function WishesSection() {
 
       {allExtinguished && (
         <div className="reveal-box" style={{ padding: '32px', backgroundColor: 'rgba(35, 11, 48, 0.6)', border: '1px solid rgba(192, 132, 252, 0.5)', borderRadius: '24px', maxWidth: '380px', width: '100%', boxSizing: 'border-box', boxShadow: '0 25px 50px rgba(0,0,0,0.8), 0 0 30px rgba(168,85,247,0.3)', textAlign: 'center' }}>
-          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}>Joyeux Anniversaire mon bébé d'Amour🥺❤️! 🎉</h4>
-          <p style={{ fontSize: '0.8rem', color: '#c084fc', letterSpacing: '0.2em', marginBottom: '16px', fontWeight: 'bold' }}></p>
+          <h4 style={{ fontSize: '1.7rem', color: '#e9d5ff', fontWeight: 'bold', marginBottom: '4px' }}> Joyeux Anniversaire mon Bébé d'Amour🥺❤️! 🎉</h4>
           <div style={{ width: '60px', height: '1px', backgroundColor: 'rgba(168, 85, 247, 0.4)', margin: '16px auto' }} />
           <p style={{ fontSize: '0.95rem', color: 'rgba(243, 232, 255, 0.95)', marginBottom: '12px', lineHeight: '1.6' }}>Merci d'être la lumière que tu es chaque jour.</p>
           <p style={{ fontStyle: 'italic', color: '#c084fc', fontSize: '0.9rem' }}>Avec toute ma tendresse,</p>
@@ -332,4 +328,3 @@ export function WishesSection() {
     </div>
   );
 }
-
