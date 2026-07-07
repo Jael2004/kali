@@ -8,12 +8,12 @@ import confetti from 'canvas-confetti';
 // ==========================================
 const MEDIAS = [
   { type: 'image', url: '/images/1.jpg', caption: "Ton rire qui illumine toutes mes journées😂" }, 
-  { type: 'image', url: '/images/5.jpg', cation: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
+  { type: 'image', url: '/images/5.jpeg', cation: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
   { type: 'image', url: '/images/6.jpeg', caption: "Notre deuxième sortie ensemble, à refaire très vite sur Accra, Assini, Zanzibar le tour du monde en fait 🙃❤️" },
-  { type: 'image', url: '/images/3.png', cation: "Reste toujours la personne extraordinaire que tu es"},
+  { type: 'image', url: '/images/2.png', cation: "Reste toujours la personne extraordinaire que tu es"},
   { type: 'video', url: '/images/12.mp4', cation: "Vois-tu comment t'es rayonnante, magnifique, tout belle...j'en passe, une DIVA en fait!"},
   { type: 'video', url: '/images/11.mp4', cation: "Je souris toujours en nous regardant. MERCI❤️"},
-  { type: 'image', url: '/images/2.png', cation: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
+  { type: 'image', url: '/images/3.png', cation: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
 ];
 
 export default function Home() {
