@@ -10,9 +10,9 @@ const MEDIAS = [
   { type: 'image', url: '/images/1.jpg', caption: "Ton rire qui illumine toutes mes journées😂" }, 
   { type: 'image', url: '/images/5.jpg', caption: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
   { type: 'image', url: '/images/6.jpeg', caption: "Notre deuxième sortie ensemble, à refaire très vite sur Accra, Assini, Zanzibar le tour du monde en fait 🙃❤️" },
-  { type: 'image', url: '/images/2.png', caption: "Reste toujours la personne extraordinaire que tu es."},
-  { type: 'video', url: '/images/12.mp4', caption: "Vois-tu comment t'es rayonnante, magnifique, tout belle... une DIVA en fait!"},
-  { type: 'video', url: '/images/11.mp4', caption: "Je souris toujours en nous regardant. MERCI pour tout❤️"},
+  { type: 'image', url: '/images/2.png', caption: "Reste toujours la personne extraordinaire que tu es"},
+  { type: 'video', url: '/images/12.mp4', caption: "Vois-tu comment t'es rayonnante, magnifique, tout belle...j'en passe, une DIVA en fait!"},
+  { type: 'video', url: '/images/11.mp4', caption: "Je souris toujours en nous regardant. MERCI❤️"},
   { type: 'image', url: '/images/3.png', caption: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
 ];
 
@@ -98,7 +98,10 @@ export default function Home() {
           00:00:{countdownText}
         </div>
         <p style={{ color: 'rgba(255, 50, 50, 0.6)', fontSize: '1rem', marginTop: '20px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-          Initialisation de ton univers...
+          Mets tes écouteurs.Initialisation de ton univers...
+           </p>
+          <p style={{ color: 'rgba(255, 50, 50, 0.6)', fontSize: '1rem', marginTop: '20px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+          Soit patiente avec les clics, les téléchargements et les déplacements du curseur, je ne suis pas développeur web donc... Bon visionnage
         </p>
       </div>
     );
@@ -160,7 +163,7 @@ export default function Home() {
 export function LetterSection() {
   
   const paragraphs = [
-    `Mon bébé d'amour,`,
+       `Mon bébé d'amour,`,
     `Aujourd'hui est une journée si particulière. En ce 14 juillet, le monde entier célèbre peut-être autre chose, mais pour moi, cette date n'a qu'un seul sens : elle marque le jour où une personne extraordinaire est venue dans ce monde pour illuminer nos vies.`,
     `Tu sais, j'ai réalisé : je n'ai pas su être là pour toi quand tu avais besoin de moi. Je n'ai pas su te tenir la main lorsque tu traversais cette situation avec le C.`,
     `Je n'ai sans doute pas donné les meilleurs conseils, ou fait ni dit ce qu'il fallait pour t'aider. Ça me fait mal de constater qu'avec un peu de recul j'ai ce sentiment d'être inutile dans ta vie...`,
@@ -178,6 +181,7 @@ export function LetterSection() {
     `Prends soin de toi, continue de briller.`,
     `Je n'ai pas grand-chose à te donner, retiens juste que tu es TOUT pour moi. I LOVE YOUUUUUUUUU`,
     `Avec tout mon amour, ton emmerdeuse Jaël 💜`
+
   ];
 
   return (
@@ -239,8 +243,8 @@ export function GallerySection({ bgMusicRef }: { bgMusicRef: React.MutableRefObj
         .nav-btn:hover:not(:disabled) { background-color: #6b21a8 !important; transform: translateY(-2px); }
       `}</style>
       
-      <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre...(je n'ai pas trouvé le terme adéquat)</h2>
-      <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les moments restent gravés. Soit patiente avec les clics, les téléchargements et les déplacements du curseur, je ne suis pas développeur web donc... Bon visionnage</p>
+      <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre...(trouve le terme adéquat)</h2>
+      <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les moments restent gravés.</p>
       
       <div className="media-container" key={index} style={{ position: 'relative', width: '100%', maxWidth: '450px', minHeight: '400px', maxHeight: '75vh', backgroundColor: '#090412', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(168,85,247,0.15)', border: '1px solid rgba(192, 132, 252, 0.3)', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {MEDIAS[index] ? (
@@ -308,7 +312,7 @@ export function WishesSection() {
       `}</style>
       
       <p style={{ maxWidth: '500px', color: 'rgba(243, 232, 255, 0.8)', fontSize: '1rem', lineHeight: '1.7', marginBottom: '48px', fontStyle: 'italic', textAlign: 'center' }}>
-        "Une occasion parfaite pour rendre ta journée un peu plus magique. Voici pour une nouvelle année remplie de belles vagues, d'histoires encore plus douces et de petits bonheurs quotidiens qui méritent d'être gardés pour toujours..."
+        "Une occasion parfaite pour rendre ta journée un peu plus magique. Voici pour une nouvelle année remplie de belles vagues, d'histoires encore plus douces et de petits bonheurs quotidiens qui méritent d'être gardés pour toujours... (Utilise le curseur pour cliquer sur chaque bougie)"
       </p>
 
       {/* ZONE DES BOUGIES */}
@@ -326,8 +330,7 @@ export function WishesSection() {
       </div>
 
       <h3 style={{ fontSize: '1.2rem', color: '#e9d5ff', letterSpacing: '0.1em', marginBottom: '48px', textAlign: 'center' }}>
-        {allExtinguished ? "Tes vœux vont s'accomplir... J'espère que t'as pas oublié de citer ta relation avec Dieu ohh Madame ✨" : "Éteins chaque lumière et fais un vœu... 
-        Utilise le curseur pour cliquer sur chaque bougie"}
+        {allExtinguished ? "Tes vœux vont s'accomplir... J'espère que t'as pas oublié de citer ta relation avec Dieu ohh Madame ✨" : "Éteins chaque lumière et fais un vœu..."}
       </h3>
 
       {allExtinguished && (
