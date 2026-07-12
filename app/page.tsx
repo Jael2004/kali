@@ -71,16 +71,26 @@ export default function Home() {
   useEffect(() => {
     if (!showCountdown) return;
 
-    const timer1 = setTimeout(() => setCountdownText("02"), 1000);
-    const timer2 = setTimeout(() => setCountdownText("01"), 2000);
-    const timer3 = setTimeout(() => {
-      setShowCountdown(false);
-      setHasStarted(true);
+    setCountdownText("10");
+
+const timer1 = setTimeout(() => setCountdownText("09"), 1000);
+const timer2 = setTimeout(() => setCountdownText("08"), 2000);
+const timer3 = setTimeout(() => setCountdownText("07"), 3000);
+const timer4 = setTimeout(() => setCountdownText("06"), 4000);
+const timer5 = setTimeout(() => setCountdownText("05"), 5000);
+const timer6 = setTimeout(() => setCountdownText("04"), 6000);
+const timer7 = setTimeout(() => setCountdownText("03"), 7000);
+const timer8 = setTimeout(() => setCountdownText("02"), 8000);
+const timer9 = setTimeout(() => setCountdownText("01"), 9000);
+const timer10 = setTimeout(() => {
+  setShowCountdown(false);
+  setHasStarted(true);
+
       if (bgMusic.current) {
         bgMusic.current.volume = 0.7;
         bgMusic.current.play().catch(e => console.log("Erreur musique", e));
       }
-    }, 3000);
+    }, 10000);
 
     return () => {
       clearTimeout(timer1);
