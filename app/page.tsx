@@ -13,7 +13,7 @@ const MEDIAS = [
   { type: 'image', url: '/images/2.png', caption: "Reste toujours la personne extraordinaire que tu es."},
   { type: 'video', url: '/images/12.mp4', caption: "Vois-tu comment t'es rayonnante, magnifique, tout belle... une DIVA en fait!"},
   { type: 'video', url: '/images/11.mp4', caption: "Je souris toujours en nous regardant. MERCI pour tout❤️"},
-  { type: 'image', url: '/images/3.png', caption: "Ma magnifique skinny brown skin girl😻 Tu as «aura» de mannéquin même iyann😭🤌❤️" },
+  { type: 'image', url: '/images/3.png', caption: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
 ];
 
 export default function Home() {
