@@ -10,10 +10,10 @@ const MEDIAS = [
   { type: 'image', url: '/images/1.jpg', caption: "Ton rire qui illumine toutes mes journées😂" }, 
   { type: 'image', url: '/images/5.jpg', caption: "Notre première sortie ensemble, tout a commencé ici😂❤️"},
   { type: 'image', url: '/images/6.jpeg', caption: "Notre deuxième sortie ensemble, à refaire très vite sur Accra, Assini, Zanzibar le tour du monde en fait 🙃❤️" },
-  { type: 'image', url: '/images/2.png', caption: "Reste toujours la personne extraordinaire que tu es"},
-  { type: 'video', url: '/images/12.mp4', caption: "Vois-tu comment t'es rayonnante, magnifique, tout belle...j'en passe, une DIVA en fait!"},
-  { type: 'video', url: '/images/11.mp4', caption: "Je souris toujours en nous regardant. MERCI❤️"},
-  { type: 'image', url: '/images/3.png', caption: "Ma magnifique skinny brown skin girl😻 Tu as aura de mannéquin même iyann😭🤌❤️" },
+  { type: 'image', url: '/images/2.png', caption: "Reste toujours la personne extraordinaire que tu es."},
+  { type: 'video', url: '/images/12.mp4', caption: "Vois-tu comment t'es rayonnante, magnifique, tout belle... une DIVA en fait!"},
+  { type: 'video', url: '/images/11.mp4', caption: "Je souris toujours en nous regardant. MERCI pour tout❤️"},
+  { type: 'image', url: '/images/3.png', caption: "Ma magnifique skinny brown skin girl😻 Tu as «aura» de mannéquin même iyann😭🤌❤️" },
 ];
 
 export default function Home() {
@@ -164,14 +164,14 @@ export function LetterSection() {
     `Aujourd'hui est une journée si particulière. En ce 14 juillet, le monde entier célèbre peut-être autre chose, mais pour moi, cette date n'a qu'un seul sens : elle marque le jour où une personne extraordinaire est venue dans ce monde pour illuminer nos vies.`,
     `Tu sais, j'ai réalisé : je n'ai pas su être là pour toi quand tu avais besoin de moi. Je n'ai pas su te tenir la main lorsque tu traversais cette situation avec le C.`,
     `Je n'ai sans doute pas donné les meilleurs conseils, ou fait ni dit ce qu'il fallait pour t'aider. Ça me fait mal de constater qu'avec un peu de recul j'ai ce sentiment d'être inutile dans ta vie...`,
-    `Tu dis habiyuellement que les gens ne seront toujours pas là dans notre vie, pour nous !`,
-    `C'est vrai. mais je veux toujours être là pour toi même si tout le monde part. Je veux être là de jour comme de nuit, dans la joie comme dans la peine, en tout instant, en toute circonstance.`,
+    `Tu dis habituellement que les gens ne seront toujours pas là dans notre vie, pour nous !`,
+    `C'est vrai, mais je veux toujours être là pour toi même si tout le monde part. Je veux être là de jour comme de nuit, dans la joie comme dans la peine, en tout instant, en toute circonstance.`,
     `Je ne sais pas comment faire. Je veux participer à nous rendre l'avenir meilleur si tu permets, si t'es prête à refaire ce chemin avec moi.`,
     `Tu as été la seule à être à mes côtés, à m'écouter sans me juger quand ça n'allait pas chez moi. Bon ça ne va jamais chez moi et je te dérange quasiment everyday.`,
     `Je t'en revaudrai toute ma vie parce que tu as exercé une présence complète dans ma vie.`,
-    `Je parais sauvage mais j'ai envie de te traiter comme une reine, ce que tu mérites.`,
-    `Je me mets à ton service de gré ou de force. Je ferai toujours de mon mieux pour que tu sois heureuse avec moi. Ces chiens qui t'ont fait du mal, que Dieu le lur rende et c'est sans rancune. Actuellement je crois qu'aucun homme ne te mérite, et un homme te méritera lorsqu'il sera à la hauteur de nos attentes à nous.`,
-    `Bref, TU ME MANQUES er tu ne cesseras de me manquer malgré qu'on est ensemble presque tous les jours...`,
+    `Je parais sauvage mais je suis douce sans vouloir me vanter et j'ai envie de te traiter comme une reine, ce que tu mérites. Mais tu veux pas.`,
+    `Je me mets à ton service de gré ou de force. Je ferai toujours de mon mieux pour que tu sois heureuse avec moi. Ces chiens qui t'ont fait du mal, que Dieu le leur rende et c'est sans rancune. Actuellement je crois qu'aucun homme ne te mérite, et un homme te méritera lorsqu'il sera à la hauteur de nos attentes à nous.`,
+    `Bref, TU ME MANQUES et tu ne cesseras de me manquer malgré qu'on est ensemble presque tous les jours...`,
     
     `Regarder ces photos et ces vidéos de nous me rappelle à quel point chaque instant passé à tes côtés est précieux. Ta présence, ton rire, ta manière unique de voir les choses et de tenir à moi... tout chez toi apporte une douceur immense à mon quotidien.`,
     `Je voulais profiter de cet espace secret pour te dire merci. Merci d'être exactement qui tu es, avec cette lumière qui n'appartient qu'à toi. Je te souhaite le plus merveilleux des anniversaires, rempli de rires, de projets fous et de tout le bonheur que tu mérites tant.`,
@@ -239,8 +239,8 @@ export function GallerySection({ bgMusicRef }: { bgMusicRef: React.MutableRefObj
         .nav-btn:hover:not(:disabled) { background-color: #6b21a8 !important; transform: translateY(-2px); }
       `}</style>
       
-      <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre...(trouve le terme adéquat)</h2>
-      <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les moments restent gravés.</p>
+      <h2 style={{ fontSize: '1.8rem', color: '#e9d5ff', marginBottom: '8px', textAlign: 'center', textShadow: '0 0 10px rgba(233,213,255,0.3)' }}>Les fragments de notre...(je n'ai pas trouvé le terme adéquat)</h2>
+      <p style={{ fontSize: '0.9rem', color: '#c084fc', opacity: 0.8, marginBottom: '32px', textAlign: 'center' }}>Le temps passe, mais les moments restent gravés. Soit patiente avec les clics, les téléchargements et les déplacements du curseur, je ne suis pas développeur web donc... Bon visionnage</p>
       
       <div className="media-container" key={index} style={{ position: 'relative', width: '100%', maxWidth: '450px', minHeight: '400px', maxHeight: '75vh', backgroundColor: '#090412', borderRadius: '24px', boxShadow: '0 20px 40px rgba(0,0,0,0.7), 0 0 20px rgba(168,85,247,0.15)', border: '1px solid rgba(192, 132, 252, 0.3)', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {MEDIAS[index] ? (
@@ -326,7 +326,8 @@ export function WishesSection() {
       </div>
 
       <h3 style={{ fontSize: '1.2rem', color: '#e9d5ff', letterSpacing: '0.1em', marginBottom: '48px', textAlign: 'center' }}>
-        {allExtinguished ? "Tes vœux vont s'accomplir... J'espère que t'as pas oublié de citer ta relation avec Dieu ohh Madame ✨" : "Éteins chaque lumière et fais un vœu..."}
+        {allExtinguished ? "Tes vœux vont s'accomplir... J'espère que t'as pas oublié de citer ta relation avec Dieu ohh Madame ✨" : "Éteins chaque lumière et fais un vœu... 
+        Utilise le curseur pour cliquer sur chaque bougie"}
       </h3>
 
       {allExtinguished && (
